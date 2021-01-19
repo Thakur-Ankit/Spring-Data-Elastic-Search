@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.4.RELEASE'
+    compile group: 'org.springframework.data', name: 'spring-data-elasticsearch', version: '4.0.1.RELEASE'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}

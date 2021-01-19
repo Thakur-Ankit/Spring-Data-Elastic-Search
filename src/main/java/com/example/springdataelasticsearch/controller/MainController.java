@@ -35,6 +35,11 @@ public class MainController {
         return articleService.searchQuery();
     }
 
+    @GetMapping("searchById")
+    public Page<Article> findById(@RequestParam("id") int id) {
+        return articleService.findById(id);
+    }
+
     @GetMapping("searchByTitle")
     public Page<Article> findByTitle(@RequestParam("title") String title) {
         return articleService.findByTitle(title);
@@ -45,14 +50,29 @@ public class MainController {
         return articleService.findByCategoriesContaining(category);
     }
 
+    /*@GetMapping("searchByPublishedDate")
+    public Page<Article> searchByPublishedDate(@RequestParam("date") Date date) {
+        return articleService.findByPublishedDate(date);
+    }*/
+
+    @GetMapping("searchByAuthorId")
+    public Page<Article> searchByAuthorId(@RequestParam("id") int id) {
+        return articleService.findByAuthorsId(id);
+    }
+
     @GetMapping("searchByAuthorName")
     public Page<Article> searchByAuthorName(@RequestParam("name") String name) {
         return articleService.findByAuthorsName(name);
     }
 
     @GetMapping("searchByAuthorAge")
-    public Page<Article> searchByAuthorAge(@RequestParam("age") String age) {
+    public Page<Article> searchByAuthorAge(@RequestParam("age") int age) {
         return articleService.findByAuthorsAge(age);
+    }
+
+    @GetMapping("searchByAuthorAgeInRange")
+    public Page<Article> searchByAuthorAgeInRange(@RequestParam("minAge") int minAge, @RequestParam("maxAge") int maxAge) {
+        return articleService.findByAuthorsAgeInRange(minAge, maxAge);
     }
 
     @GetMapping("searchByCustomQueryAnnotation")

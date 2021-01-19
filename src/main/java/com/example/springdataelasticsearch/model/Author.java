@@ -5,17 +5,17 @@ import org.springframework.data.annotation.Id;
 public class Author {
 
     @Id
-    private String id;
+    private int id;
 
     private String name;
 
-    private String age;
+    private int age;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -27,11 +27,11 @@ public class Author {
         this.name = name;
     }
 
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
+    public void setAge(int age) {
         this.age = age;
     }
 }

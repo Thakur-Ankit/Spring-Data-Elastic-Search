@@ -12,11 +12,11 @@ import java.util.List;
 public class Article {
 
     @Id
-    private String id;
+    private int id;
 
     private String title;
 
-    private String publishedDate;
+    private Date publishedDate;
 
     private String description;
 
@@ -25,11 +25,11 @@ public class Article {
     @Field(type = FieldType.Nested, includeInParent = true)
     private List<Author> authors;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -45,11 +45,11 @@ public class Article {
         return authors;
     }
 
-    public String getPublishedDate() {
+    public Date getPublishedDate() {
         return publishedDate;
     }
 
-    public void setPublishedDate(String publishedDate) {
+    public void setPublishedDate(Date publishedDate) {
         this.publishedDate = publishedDate;
     }
 

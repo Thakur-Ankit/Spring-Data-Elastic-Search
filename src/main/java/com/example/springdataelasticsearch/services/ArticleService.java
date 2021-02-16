@@ -44,19 +44,19 @@ public class ArticleService {
         Author author1 = new Author();
         author1.setId(101);
         author1.setName("Robi Sen");
-        author1.setAge(28);
+        author1.setAge(32);
 
         Author author2 = new Author();
         author2.setId(102);
         author2.setName("Charlie Collins");
-        author2.setAge(32);
+        author2.setAge(28);
 
         article1.setAuthors(asList(author1, author2));
 
         Article article2 = new Article();
         article2.setId(1935182927);
         article2.setTitle("Android in Practice");
-        article2.setDescription("Android in Practice is treasure trove of Android goodness, with over 100 tested, ready-to-use techniques including complete end-to-end example applications and practical tips for real world mobile application developers. Written by real world Android developers, this book addresses the trickiest questions raised in forums and mailing lists. Using an easy-to-follow problem/solution/discussion format, it dives into important topics not covered in other Android books, like advanced drawing and graphics, testing and instrumentation, building and deploying applications, using alternative languages, and native development.");
+        article2.setDescription("Android in Practice is treasure trove of Android goodness, with over 100 tested, ready-to-use techniques including complete end-to-end example applications and practical tips for real world mobile application developers. Written by real world Android developers, this book addresses the trickiest questions raised in forums and mailing lists.");
         article2.setPublishedDate(new Date(1317321000000L));
         article2.setCategories(asList("Mobile"));
 
@@ -70,7 +70,7 @@ public class ArticleService {
         Article article3 = new Article();
         article3.setId(193239415);
         article3.setTitle("Hibernate in Action");
-        article3.setDescription("Hibernate practically exploded on the Java scene. Why is this open-source tool so popular  Because it automates a tedious task: persisting your Java objects to a relational database. The inevitable mismatch between your object-oriented code and the relational database requires you to write code that maps one to the other. This code is often complex, tedious and costly to develop. Hibernate does the mapping for you.    Not only that, Hibernate makes it easy. Positioned as a layer between your application and your database, Hibernate takes care of loading and saving of objects. Hibernate applications are cheaper, more portable, and more resilient to change. And they perform better than anything you are likely to develop yourself.    Hibernate in Action carefully explains the concepts you need, then gets you going. It builds on a single example to show you how to use Hibernate in practice, how to deal with concurrency and transactions, how to efficiently retrieve objects and use caching.    The authors created Hibernate and they field questions from the Hibernate community every day - they know how to make Hibernate sing. Knowledge and insight seep out of every pore of this book.");
+        article3.setDescription("Hibernate practically exploded on the Java scene. Why is this open-source tool so popular  Because it automates a tedious task: persisting your Java objects to a relational database. The inevitable mismatch between your object-oriented code and the relational database requires you to write code that maps one to the other.");
         article3.setPublishedDate(new Date(1091298600000L));
         article3.setCategories(asList("Java"));
 
@@ -108,7 +108,7 @@ public class ArticleService {
         Article article5 = new Article();
         article5.setId(1884777716);
         article5.setTitle("Server-Based Java Programming");
-        article5.setDescription("Java on the server is here to stay. Whether you're using J2EE or writing your own, you will need to understand the fundamental concepts of server-based Java. Server-Based Java Programming teaches those concepts of Java that underlie the J2EE APIs and the best ways to use them. An ongoing focus on the full lifecycle, including administration and deployment, makes this book a rare, practical guide. One of its themes is the theoretical \"three-zeroes\" goal for server development--zero development, zero administration, and zero deployment.    Server-Based Java Programming isn't just about implementation--it's also about architecture, and design. You'll learn how to write the code that sustains a cutting-edge enterprise. You will learn nuts-and-bolts topics like ClassLoaders, threads, CORBA, RMI/IIOP, and JNI, as well as how to make each of these contribute to enterprise-wide goals such as fault-tolerance, easier system administration, five-nine availability, deployment without headaches, and lower development costs.");
+        article5.setDescription("Java on the server is here to stay. Whether you're using J2EE or writing your own, you will need to understand the fundamental concepts of server-based Java.");
         article5.setPublishedDate(new Date(959797800000L));
         article5.setCategories(asList("Java", "Client-Server", "Internet"));
 
@@ -147,14 +147,6 @@ public class ArticleService {
         return articleRepository.searchQuery();
     }
 
-    public Page<Article> findById(int id) {
-        return articleRepository.findById(id, PageRequest.of(0, 10));
-    }
-
-    public Page<Article> findByAuthorsId(int id) {
-        return articleRepository.findByAuthorsId(id, PageRequest.of(0, 10));
-    }
-
     public Page<Article> findByAuthorsName(String name) {
         return articleRepository.findByAuthorsName(name, PageRequest.of(0, 10));
     }
@@ -167,20 +159,12 @@ public class ArticleService {
         return articleRepository.findByAuthorsAgeInRange(minAge, maxAge, PageRequest.of(0, 10));
     }
 
-   /* public Page<Article> findByPublishedDate(Date date) {
-        return articleRepository.findByPublishedDate(date, PageRequest.of(0, 10));
-    }*/
-
     public Page<Article> findByTitle(String title) {
         return articleRepository.findByTitle(title, PageRequest.of(0, 10));
     }
 
     public Page<Article> findByCategoriesContaining(String category) {
         return articleRepository.findByCategoriesContaining(category, PageRequest.of(0, 10));
-    }
-
-    public Page<Article> findByAuthorsNameUsingCustomQueryAnnotation(String name) {
-        return articleRepository.findByAuthorsNameUsingCustomQueryAnnotation(name, PageRequest.of(0, 10));
     }
 
     public Page<Article> searchOnAllFields(String query) {
